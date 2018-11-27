@@ -1,0 +1,145 @@
+<!-- UBIBOARD -->
+<!-- This example illustrates how to retrieve an image from the phone via browser and post it as an asset on the webstrate -->
+
+<html><head>
+<title>UBIBOARD</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style id="style.css">
+#imgInput {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    /* position: absolute; */
+}
+
+#archive {
+    margin: 10px;
+}
+
+#archive li {
+    margin: 5px;
+}
+
+#imgInput + label, .menu-item {
+    position: relative;
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: gray;
+    display: inline-block;
+    padding: 10px;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    border: 1px solid white;
+}
+
+#imgInput:focus + label
+{
+    background-color: gray;
+}
+
+#imgInput + label:hover {
+    background-color: lightgray;
+    cursor: pointer;    
+}
+
+img {
+    width: 100%;
+}
+
+/* @media (min-width: 581px) {
+    
+    img {
+        transform: rotate(90deg);            
+        
+    }
+    
+} */
+
+
+</style>
+<style>
+    #visitors {
+        display: none;
+    }
+</style>
+</head>
+<body>
+    <input type="file" accept="image/*" id="imgInput"><label for="imgInput">UPDATE UBIBOARD</label>
+    <div id="latest" style="display: none;">
+        <img id="latest-img" src="1542881656027.jpg">
+    </div>
+    <div id="archive">
+        List of uploaded photos:
+        <ul id="posts"><li><a href="1542881656027.jpg">22/11/2018 11.14</a></li><li><a href="1542100655356.jpg">13/11/2018 10.17</a></li><li><a href="1541683486131.jpg">8/11/2018 14.24</a></li><li><a href="1541074470619.jpeg">1/11/2018 13.14</a></li><li><a href="1539286143491.jpeg">11/10/2018 21.29</a></li>            
+        </ul>
+    </div>
+    <ul id="visitors"><li><id>H1vPGwunX</id><date>1541074459541</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>H1vPGwunX</id><date>1541074486215</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>SkOrbP_n7</id><date>1541679632788</date><devicetype>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36</devicetype></li><li><id>SkOrbP_n7</id><date>1541679636718</date><devicetype>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36</devicetype></li><li><id>SkOrbP_n7</id><date>1541681333463</date><devicetype>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36</devicetype></li><li><id>H1vPGwunX</id><date>1541683437591</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>SkOrbP_n7</id><date>1541759358749</date><devicetype>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36</devicetype></li><li><id>SkOrbP_n7</id><date>1541768646383</date><devicetype>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36</devicetype></li><li><id>SkOrbP_n7</id><date>1542032411050</date><devicetype>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36</devicetype></li><li><id>S10RruP6X</id><date>1542059478555</date><devicetype>Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0</devicetype></li><li><id>S10RruP6X</id><date>1542059523403</date><devicetype>Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0</devicetype></li><li><id>BkO88Gd6Q</id><date>1542100560595</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>BkO88Gd6Q</id><date>1542100586495</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>ByF9Uzu6m</id><date>1542100625581</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>BkO88Gd6Q</id><date>1542100631067</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>H1vPGwunX</id><date>1542100635624</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>BkO88Gd6Q</id><date>1542100647565</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>H1vPGwunX</id><date>1542100649993</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>BkO88Gd6Q</id><date>1542100689313</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>BkO88Gd6Q</id><date>1542100701397</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>BkO88Gd6Q</id><date>1542100932456</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>BkO88Gd6Q</id><date>1542100947164</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>H1vPGwunX</id><date>1542101067500</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>S10RruP6X</id><date>1542110738045</date><devicetype>Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0</devicetype></li><li><id>S10RruP6X</id><date>1542110744759</date><devicetype>Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0</devicetype></li><li><id>BkO88Gd6Q</id><date>1542127955921</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>S10RruP6X</id><date>1542131547646</date><devicetype>Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0</devicetype></li><li><id>BkY9-ntam</id><date>1542205841076</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>BkY9-ntam</id><date>1542358475771</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>ByF9Uzu6m</id><date>1542545352412</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>H1vPGwunX</id><date>1542697456538</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>SkOrbP_n7</id><date>1542699317564</date><devicetype>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36</devicetype></li><li><id>SkOrbP_n7</id><date>1542699348336</date><devicetype>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36</devicetype></li><li><id>ByF9Uzu6m</id><date>1542700708420</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>S10RruP6X</id><date>1542704199659</date><devicetype>Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0</devicetype></li><li><id>ByQgfU_a7</id><date>1542881644622</date><devicetype>Mozilla/5.0 (Android 7.1.1; Mobile; rv:63.0) Gecko/63.0 Firefox/63.0</devicetype></li><li><id>ByQgfU_a7</id><date>1542881723617</date><devicetype>Mozilla/5.0 (Android 7.1.1; Mobile; rv:63.0) Gecko/63.0 Firefox/63.0</devicetype></li><li><id>ByQgfU_a7</id><date>1542881746637</date><devicetype>Mozilla/5.0 (Android 7.1.1; Mobile; rv:63.0) Gecko/63.0 Firefox/63.0</devicetype></li><li><id>SkOrbP_n7</id><date>1542914903444</date><devicetype>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36</devicetype></li><li><id>SkOrbP_n7</id><date>1542914925169</date><devicetype>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36</devicetype></li><li><id>SkOrbP_n7</id><date>1542914959369</date><devicetype>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36</devicetype></li><li><id>SkOrbP_n7</id><date>1542915266172</date><devicetype>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36</devicetype></li><li><id>SkOrbP_n7</id><date>1542915324289</date><devicetype>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36</devicetype></li><li><id>H1vPGwunX</id><date>1543223700828</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>H1vPGwunX</id><date>1543223742214</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>H1vPGwunX</id><date>1543298728162</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>S1CZMD50X</id><date>1543299589999</date><devicetype>Mozilla/5.0 (Linux; Android 8.1.0; Pixel 2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.80 Mobile Safari/537.36</devicetype></li><li><id>ByF9Uzu6m</id><date>1543300742013</date><devicetype>Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1</devicetype></li><li><id>S1CZMD50X</id><date>1543302298940</date><devicetype>Mozilla/5.0 (Linux; Android 8.1.0; Pixel 2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.80 Mobile Safari/537.36</devicetype></li></ul>
+    <script id="main.js">function getExtension(filename) {
+    var parts = filename.split('.');
+    return parts[parts.length - 1];
+}
+
+$('#imgInput').change(onImageAdded);
+
+function onImageAdded(e) {        
+    e.preventDefault();
+    //on change event  
+    formData = new FormData();
+    if($(this).prop('files').length > 0)
+    {
+        file =$(this).prop('files')[0];
+        let imageName = Date.now() + "." + getExtension(file.name);            
+        formData.append("image", file, imageName);
+                        
+        console.log("img", formData.get("image"));
+        
+        let filename = formData.get("image").name;
+        console.log("filename", filename);
+        
+        $('#latest-img').attr("src", filename);
+        // let imgKeywords = prompt("Name of entry:");            
+        // if (imgKeywords == null) imgKeywords = "unnamed";
+        var img = createImage(filename);
+        $('#posts').prepend(img);
+                    
+        $.ajax({
+            type: 'POST',
+            url: '',
+            data: formData,
+            processData: false,
+            contentType: false
+        });
+        
+        $("#imgInput").val('');
+    
+    }
+}
+
+function createImage(filename){
+    let today = new Date();        
+    var options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: "2-digit", minute: "2-digit" };
+    var imageEntry =         
+        "<li>" + 
+            "<a href=\""+filename+"\">" + today.toLocaleDateString("da-DK", options) +                
+            "</a>" +             
+        "</li>";
+    return imageEntry; 
+}
+
+
+</script>
+   
+</body></html>
