@@ -1,0 +1,328 @@
+<html __wid="patcHHPM"><head __wid="4GusSkT7">
+    <meta name="viewport" content="width=device-width, initial-scale=1" __wid="qdLivAuq"/>
+    <title __wid="XtHn5Frz">Public Display</title>
+    <style __wid="r5bzMywT">
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            background: black;
+            user-select: none;
+        }
+
+        #slides {
+            margin: auto;
+            width: 100%;
+            height: 100%;
+            background: black;
+        }
+
+        #slides img {
+            display: none;
+        }
+
+        #slides img.active {
+            margin: auto;
+            display: block;
+            height: 100%;
+        }
+
+        #legend {
+            display: block;
+            position: absolute;
+            bottom: 50px;
+            left: 50px;
+            width: 450px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            padding: 10px;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 130%;
+
+            text-shadow:
+                -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000;
+        }
+
+        #legend div {
+            vertical-align: middle;
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        #legend #up,
+        #legend #down,
+        #legend #score {
+            display: block;
+            text-align: center;
+            width: 30px;
+            font-size: 150%;
+        }
+
+        #legend #down {
+            color: red;
+        }
+
+        #legend #up {
+            color: green;
+        }
+
+
+        #interactions {
+            background: rgba(0, 0, 0, 0.9);
+            position: relative;
+            border: 2px solid white;
+            width: 300px;
+            height: 300px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -150px;
+            margin-left: -150px;
+        }
+
+        #interactions #filebrowser {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+        }
+
+        #upvote {
+            position: absolute;
+            left: 100px;
+            top: 10px;
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 70px solid red;
+        }
+
+        #downvote {
+            position: absolute;
+            left: 100px;
+            bottom: 10px;
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+
+            border-top: 70px solid green;
+        }
+
+        #next {
+            position: absolute;
+            right: 10px;
+            top: 100px;
+            width: 0;
+            height: 0;
+            border-top: 50px solid transparent;
+            border-bottom: 50px solid transparent;
+
+            border-left: 70px solid #444;
+        }
+
+        #prev {
+            position: absolute;
+            left: 10px;
+            top: 100px;
+            width: 0;
+            height: 0;
+            border-top: 50px solid transparent;
+            border-bottom: 50px solid transparent;
+
+            border-right: 70px solid #444;
+        }
+
+        #upload {
+            position: absolute;
+            left: 110px;
+            top: 110px;
+            width: 80px;
+            height: 80px;
+            border-radius: 40px;
+            border: 1px solid white;
+            color: white;
+            text-align: center;
+            padding-top: 25px;
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+            font-size: 90%;
+        }
+    </style>
+</head>
+
+<body __wid="7fyT4r94">
+    <div id="slides" __wid="GsE2wenP"><img data-timer="5000" data-upvotes="0" data-downvotes="0" src="IMG_0302.JPG" class __wid="wMCcQrxh"/><img data-timer="5000" data-upvotes="0" data-downvotes="0" src="IMG_2401.JPG" __wid="vxXiWeVb" class/><img data-timer="5000" data-upvotes="0" data-downvotes="0" src="IMG_3953.JPG" __wid="u3Q7Pdhf" class="active"/><img data-timer="5000" data-upvotes="0" data-downvotes="0" src="IMG_6103.JPG" __wid="8bCwXS4i" class/><img data-timer="5000" data-upvotes="0" data-downvotes="0" src="mod-meme.png" __wid="Z3N3PfG9" class/><img data-timer="5000" data-upvotes="0" data-downvotes="0" src="mod-meme.png" __wid="UkYrUfCL" class/></div>
+    <transient id="legend">
+        <div>
+            <div id="up">⬆</div>
+            <div id="score">-18</div>
+            <div id="down">⬇</div>
+        </div>
+        <div>Use your personal device to interact!</div>
+    </transient>
+
+    <transient id="interactions" __wid="DhMP4Fmz">
+        <div id="upvote"></div>
+        <div id="prev"></div>
+        <div id="upload">UPLOAD IMAGE</div>
+        <div id="next"></div>
+        <div id="downvote"></div>
+
+    </transient>
+    <script>
+        var t
+        webstrate.on("loaded", function (webstrateId, clientId, user) {
+            registerDevice(clientId);
+
+            let url = new URL(window.location.href);
+            var public = url.searchParams.get("public");
+
+            if (public == null) {
+                document.querySelector("#legend").style.display = "none"
+                loadInteractions()
+            } else {
+                document.querySelector("#interactions").style.display = "none"
+                loadSlides()
+                playSlide()
+                webstrate.on("signal", function (msg, sender) {
+                    if (msg === "next") {
+                        console.log("next")
+                        window.clearInterval(t)
+                        var currentSlide = document.querySelector("img.active")
+                        var next = currentSlide.nextSibling
+                        if (!next) {
+                            next = currentSlide.parentNode.querySelector("img")
+                        }
+                        currentSlide.classList = ""
+                        next.classList = "active"
+
+                        playSlide()
+                    } else if (msg === "prev") {
+                        console.log("prev")
+                        window.clearInterval(t)
+                        var currentSlide = document.querySelector("img.active")
+                        
+                        var prev = currentSlide.previousSibling
+                        if (!prev || prev.tagName !== "IMG") {
+                            prev = currentSlide.parentNode.querySelector("img:last-of-type")
+                        }
+
+                        var interval = prev.dataset.timer
+                        currentSlide.classList = ""
+                        prev.classList = "active"
+                        console.log(prev)
+                        playSlide()
+                    }
+                });
+            }
+        });
+
+        webstrate.on("asset", function (asset) {
+            var slideContainer = document.querySelector("#slides")
+            if (asset.mimeType.indexOf("image") != -1) {
+                var el = document.createElement('img')
+                el.dataset.timer = 5000
+                el.dataset.upvotes = 0
+                el.dataset.downvotes = 0
+                el.src = asset.fileName
+                slideContainer.appendChild(el)
+            }
+        });
+
+        function loadSlides() {
+            var slideContainer = document.querySelector("#slides")
+            var slides = slideContainer.querySelectorAll("img")
+            webstrate.assets.forEach(function (asset) {
+                if (asset.mimeType.indexOf("image") != -1) {
+                    var exists = false;
+                    for (var i = 0, n = slides.length; i < n; i++) {
+                        var slide = slides[i]
+                        if (slide.src.indexOf(asset.fileName) > -1) {
+                            exists = true;
+                            break;
+                        }
+                    }
+
+                    if (!exists) {
+                        var el = document.createElement('img')
+                        el.dataset.timer = 5000
+                        el.dataset.upvotes = 0
+                        el.dataset.downvotes = 0
+                        el.src = asset.fileName
+                        slideContainer.appendChild(el)
+                    }
+                }
+            })
+
+            var active = slideContainer.querySelector("img.active")
+            if (!active) {
+                slideContainer.querySelector("img").classList = "active"
+            }
+        }
+
+        function playSlide() {
+            var currentSlide = document.querySelector("img.active")
+            var legend = document.querySelector("#legend")
+            legend.querySelector("#score").innerHTML = currentSlide.dataset.upvotes - currentSlide.dataset.downvotes
+
+            var interval = currentSlide.dataset.timer
+
+            t = setTimeout(function () {
+                var next = currentSlide.nextSibling
+                if (!next) {
+                    next = currentSlide.parentNode.querySelector("img")
+                }
+                currentSlide.classList = ""
+                next.classList = "active"
+                playSlide()
+            }, interval)
+        }
+
+        function loadInteractions() {
+            var ui = document.querySelector("#interactions")
+            ui.addEventListener("click", function (e) {
+                var t = e.target;
+                if (t.id === "upload") {
+                    webstrate.uploadAsset(function (err, result) {
+                        console.log(err, result)
+                    })
+                } else if (t.id === "next") {
+                    webstrate.signal("next")
+                } else if (t.id === "prev") {
+                    webstrate.signal("prev")
+                } else if (t.id === "upvote") {
+                    var active = document.querySelector("#slides img.active")
+                    active.dataset.timer = parseInt(active.dataset.timer) + 100;
+                    active.dataset.upvotes++;
+                } else if (t.id === "downvote") {
+                    var active = document.querySelector("#slides img.active")
+                    active.dataset.timer = parseInt(active.dataset.timer) - 100;
+                    active.dataset.downvotes++;
+
+                }
+            })
+        }
+
+        function registerDevice(clientId) {
+            if (localStorage.boardDeviceId) {
+                console.log("already registered", localStorage.boardDeviceId);
+            } else {
+                localStorage.boardDeviceId = clientId;
+                console.log("now registered as...", localStorage.boardDeviceId);
+            }
+        }
+
+        function uploadFile(e) {
+
+        }
+    </script>
+</body></html>
