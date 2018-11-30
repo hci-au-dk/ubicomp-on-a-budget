@@ -2,6 +2,9 @@
 A repository collecting all the bits and pieces of the local ubicomp experiments
 
 
-## When using webstrates file system to connect to our server
+## When using webstrates file system to connect to our serve
 
-```wfs --id=[your_webstratesid] ==host=proxemics.cs.au.dk
+```Hi multiline'''
+
+`single line'
+
