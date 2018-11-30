@@ -6,10 +6,8 @@ A repository collecting all the bits and pieces of the local ubicomp experiments
 1. DO A VIDEO GUIDE FOR USING WEBSTRATES FOR DEVELOPMENT
 2. DO ONE THAT WITH FILESYSTEM
 
-## When using webstrates file system to connect to our serve
+## When using webstrates file system to connect to our server
 
-```Hi multiline```
+`wfs --id=[your_webstrateId] --host=proxemics.cs.au.dk`
 
-
-`single line`
-
+https://github.com/Webstrates/file-system
