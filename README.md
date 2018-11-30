@@ -10,4 +10,5 @@ A repository collecting all the bits and pieces of the local ubicomp experiments
 
 `wfs --id=[your_webstrateId] --host=proxemics.cs.au.dk`
 
+Download this node module:
 https://github.com/Webstrates/file-system
