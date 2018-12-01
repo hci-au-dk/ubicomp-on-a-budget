@@ -1,11 +1,6 @@
 # ubicomp-on-a-budget
 A repository collecting all the bits and pieces of the local ubicomp experiments
 
-
-## TODO
-1. DO A VIDEO GUIDE FOR USING WEBSTRATES FOR DEVELOPMENT
-2. DO ONE THAT WITH FILESYSTEM
-
 # Guides
 
 ## Installing webstrates file system (WFS)
