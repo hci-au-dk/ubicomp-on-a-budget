@@ -1,214 +1,122 @@
 <html>
+
 <head>
     <!-- SET OFFICE LOCATION. e.g. ada123-public -->
     <title>Ada123-public</title>
-    
     <style>
         body,
         html {
-            margin:0;
+            margin: 0;
             width: 100%;
             height: 100%;
             position: relative;
             overflow: hidden;
-
             background: white;
-
             -moz-user-select: none;
             -ms-user-select: none;
             -webkit-user-select: none;
+            font-family: AUPassataRegular, verdana, sans-serif;
         }
 
-        #samsung {
+        .samsung {
             position: absolute;
-            top: 0px;
+            top: 1024px;
             left: 0px;
             width: 768px;
             height: 1024px;
-            color: #103e80;
-            font-family: AUPassataRegular, verdana, sans-serif;
-            padding: 0px 50px;
             box-sizing: border-box;
             -moz-box-sizing: border-box;
+            transition: top ease-out 0.2s;
         }
 
-        #samsung #header {
-            border-bottom: 6px solid #103e80;
+        .samsung.active,
+        .samsung#sign {
+            top: 0px;
+            left: 0px;
+            transition: top ease-in 0.2s;
         }
 
-        #samsung #header div {
-            display: inline-block;
-            vertical-align: top;
+        .samsung#sign {
+            background: blue;
         }
 
-        #samsung #header div#logo {
-            position: relative;
-            top: -10px;
-            font-size: 1000%;
-            margin-right: 20px;
-            font-family: au_icons;
-            margin-bottom: -20px;
+        .samsung#gallery {
+            background: red;
         }
 
-        #samsung #header h2 {
-            margin-top:25px;
+        .samsung#message h1#recording {
+            color: red;
+            text-align: center;
+            display: none;
         }
 
-        #samsung #header h4,
-        #samsung h3 {
-            padding: 0px;
-            margin: 0px;
+        .samsung#message h1 {
+            margin-top: 50px;
+            text-align: center;
         }
 
-        #samsung  #message {
-            margin: 20px 0px;
-            padding:30px 10px;
+        .samsung#message .ui {
+            position: absolute;
+            top: 700px;
             text-align: center;
             width: 100%;
-            display:none;
+            z-index: 8;
         }
 
-        #samsung  #message.yellow {
-            display:block;
-            color:black;
-            background:#f7f056;
+        .samsung#picture {
+            background: pink;
         }
 
-        #samsung  #message.red {
-            display:block;
-            color:white;
-            background:#dc050c;
+        .samsung#doodle {
+            background: yellow;
         }
 
-        #samsung  #message.green {
-            display:block;
-            color:white;
-            background:#4eb265;
-        }
-
-        #samsung #today {
-            margin: 50px 0px;
-            /* To remove default bottom margin */
-            padding: 0px;
-            font-size: 150%;
-            list-style-position: inside;
-        }
-
-        #samsung #today li {
-            margin-left: 10px;
-        }
-
-        #samsung #today legend {
-            margin-bottom: 10px;
-            font-size: 110%;
-            font-weight: bolder;
-        }
-
-        #samsung #menu {
-            position:absolute;
-            bottom:50px;
-            text-align:center;
-            margin:auto;
-        } 
-
-        #samsung #menu div {
-            display:inline-block;
-            padding:5px;
-            border:1px solid lightblue;
-            margin:10px;
-            cursor:default;
-        }
-
-        #samsung #controls {
-            position:absolute;
-            top:10px;
-            left:10px;
-            width: 50px;
-            height: 50px;
-            border-radius: 25px;
-            border:1px dashed #333333;
-            -webkit-transition: width 0.5s;
-            overflow:hidden;
-        }
-
-        #samsung #controls button {
-            opacity:0;
-        }
-
-        #samsung #controls.active {
-            background: #333333;
-            width:200px;
-            left:0px;
-            border-radius:0px 25px 25px 0px;
-            -webkit-transition: width 0.5s;
-        }
-
-        #samsung #controls.active button {
-            opacity:1;
-            
-            -webkit-transition: opacity 0.5s;
-            -webkit-transition-delay: 0.5s; 
-            transition-delay: 0.5s;
-            padding:5px;
-            width:140px;
-            margin:6px 0px 0px 25px;
-            border-radius: 3px;
-            font-size:110%;
-            background:grey;
-        }
-
-        #admin {
+        #menu {
             position: absolute;
-            top: 0px;
-            left: 769px;
-            color:white;
-            background: #333333;
-            height: 100%;
-            width: 100%;
-            font-family: AUPassataRegular, verdana, sans-serif;
-            padding: 0px 50px;
-            box-sizing: border-box;
-            -moz-box-sizing: border-box;
+            top: 924px;
+            width: 768px;
+            text-align: center;
+            margin: auto;
+            z-index: 10;
         }
 
-        #admin .message {
-            margin:5px;
-            padding:10px;
-            width:330px;
+        .close {
+            position: absolute;
+            top: 10px;
+            left: 680px;
         }
 
-        #admin .message input[type="checkbox"]{
-            -ms-transform: scale(2); /* IE */
-            -moz-transform: scale(2); /* FF */
-            -webkit-transform: scale(2); /* Safari and Chrome */
-            -o-transform: scale(2); /* Opera */
+        .button,
+        button {
+            display: inline-block;
             padding: 10px;
-            margin-right: 30px;
+            border: 1px solid #103e80;
+            margin: 10px;
+
+            cursor: default;
+            color: #103e80;
+            background: white;
+            font-size: 110%;
+            border-radius: 2px;
+            outline: none;
+            box-shadow: 0px 0px 2px #103e80;
         }
 
-         #admin h1 input[type="checkbox"] {
-            -ms-transform: scale(2); /* IE */
-            -moz-transform: scale(2); /* FF */
-            -webkit-transform: scale(2); /* Safari and Chrome */
-            -o-transform: scale(2); /* Opera */
-            margin:-10px 20px;
-         }
-
-        #admin .message input[type="text"] {
-            width:280px;
-            padding:5px;
+        button:disabled {
+            opacity: 0.5
         }
 
-        #admin .message.red {
-            background:#dc050c;
+        button#videorecord.press {
+            color: white;
+            background: red;
         }
 
-        #admin .message.green {
-            background:#4eb265;
-        }
-
-        #admin .message.yellow {
-            background:#f7f056;
+        video {
+            position: absolute;
+            top: 200px;
+            left: 64px;
+            width: 640px;
+            height: 480px;
         }
 
         /* AU FONTS */
@@ -228,10 +136,288 @@
             font-style: normal
         }
     </style>
-
 </head>
 
 <body>
+    <div class="samsung" id="sign">
+
+    </div>
+    <div class="samsung" id="gallery">
+        <div class="close button">CLOSE</div>
+    </div>
+    <div class="samsung" id="message">
+
+        <div class="close button">CLOSE</div>
+        <h1>Leave a video / audio message ...</h1>
+        <h1 id="recording">RECORDING...</h1>
+        <video id="videomsg" autoplay></video>
+        <div class="ui">
+            <button id="videorecord">Push to record</button>
+            <button id="videosave">Save</button>
+        </div>
+        <script id="video.js">
+            ; (function () {
+                var self = document.querySelector(".samsung#message")
+                var recording = document.querySelector(".samsung#message h1#recording")
+                var record = document.querySelector("button#videorecord")
+                var save = document.querySelector("button#videosave")
+                save.disabled = true
+
+                self.addEventListener("transitionend", function (e) {
+                    if (self.getBoundingClientRect().y === 0) {
+                        start()
+                    } else {
+                        cleanup()
+                    }
+                })
+
+                record.addEventListener("mousedown", startRecording)
+                record.addEventListener("touchstart", startRecording)
+                record.addEventListener("mouseup", stopRecording)
+                record.addEventListener("touchend", stopRecording)
+                save.addEventListener("click", saveRecording)
+
+                var options;
+                if (MediaRecorder.isTypeSupported('video/webm;codecs=vp9')) {
+                    options = { mimeType: 'video/webm; codecs=vp9' };
+                } else if (MediaRecorder.isTypeSupported('video/webm;codecs=vp8')) {
+                    options = { mimeType: 'video/webm; codecs=vp8' };
+                }
+
+                var recordedBlobs, mediaRecorder, video, blob;
+                function start() {
+                    var constraints = {
+                        audio: {
+                            echoCancellation: { exact: true }
+                        },
+                        video: {
+                            width: 640, height: 480
+                        }
+                    }
+                    video = document.querySelector("video#videomsg")
+                    navigator.mediaDevices.getUserMedia(constraints)
+                        .then(function (stream) {
+                            window.stream = stream
+                            video.srcObject = stream
+                        });
+                }
+
+                function startRecording() {
+                    save.disabled = true
+                    record.classList.add("press")
+                    record.innerHTML = "Recording ..."
+                    recording.style.display = "inherit"
+                    video.srcObject = window.stream
+                    video.loop = false
+                    recordedBlobs = []
+                    mediaRecorder = new MediaRecorder(window.stream, options);
+                    mediaRecorder.ondataavailable = handleDataAvailable;
+                    function handleDataAvailable(e) {
+                        if (e.data && e.data.size > 0) {
+                            console.log("pushing recorded chunks")
+                            recordedBlobs.push(e.data);
+                        }
+                    }
+                    mediaRecorder.start(10);
+                }
+
+                function stopRecording() {
+                    record.classList.remove("press")
+                    record.innerHTML = "Push to record"
+                    recording.style.display = "none"
+                    mediaRecorder.stop();
+                    save.removeAttribute("disabled")
+                    blob = new Blob(recordedBlobs, { type: 'video/webm' });
+                    video.srcObject = null
+                    video.src = null
+                    video.loop = true
+                    video.src = window.URL.createObjectURL(blob);
+                }
+
+                function saveRecording() {
+                    var formData = new FormData();
+                    blob.lastModifiedDate = new Date();
+                    blob.name = "video" + new Date().getTime() + ".webm";
+                    formData.append("video", blob, blob.name)
+
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '');
+                    xhr.send(formData);
+                }
+
+                function cleanup() {
+                    var tracks = window.stream.getTracks()
+                    tracks.forEach(function (t) {
+                        t.stop()
+                    })
+                    video = document.querySelector("video#videomsg")
+                    video.srcObject = null
+                    video.src = null
+                }
+
+            })()
+        </script>
+    </div>
+    <div class="samsung" id="picture">
+        <div class="close button">CLOSE</div>
+        <script>
+                ; (function () {
+
+                    self.addEventListener("transitionend", function (e) {
+                        if (self.getBoundingClientRect().y === 0) {
+                            start()
+                        } else {
+                            cleanup()
+                        }
+                    })
+
+                    function start() {
+
+                    }
+
+                    function takePicture() {
+
+                    }
+
+
+                    function savePicture() {
+
+                    }
+
+                    function cleanup() {
+
+                    }
+
+                })()
+        </script>
+    </div>
+    <div class="samsung" id="doodle">
+        <script>
+                ; (function () {
+
+                    self.addEventListener("transitionend", function (e) {
+                        if (self.getBoundingClientRect().y === 0) {
+                            start()
+                        } else {
+                            cleanup()
+                        }
+                    })
+
+                    function start() {
+
+                    }
+
+                    function saveDrawing() {
+
+                    }
+
+                    function cleanup() {
+
+                    }
+
+                })()
+        </script>
+    </div>
+
+    <div id="menu">
+        <div class="button" id="m_message">Leave video message</div>
+        <div class="button" id="m_doodle">Draw something</div><!-- save doodle on !empty -->
+        <div class="button" id="m_picture">Take a picture!</div>
+        <div class="button" id="m_gallery">Gallery</div>
+    </div>
+
+
+    <script>
+        /*
+        var video, views = {
+            "message": {
+                "load": loadMessage,
+                "remove": clearMessage
+            },
+            "picture": {
+                "load": loadPicture,
+                "remove": removePicture
+            }
+        }*/
+
+        bootstrap()
+
+        function bootstrap() {
+            menu()
+            //video()
+        }
+
+        function video() {
+            var constraints = {
+                audio: {
+                    echoCancellation: { exact: true }
+                },
+                video: {
+                    width: 640, height: 480
+                }
+            }
+
+            video = document.querySelector("video#video")
+            navigator.mediaDevices.getUserMedia(constraints)
+                .then(function (stream) {
+                    window.stream = stream
+                    video.srcObject = stream
+                });
+        }
+
+        function menu() {
+            var m = document.querySelector("#menu")
+            var uit;
+            m.onclick = function (e) {
+                var id = e.target.id.replace("m_", "")
+                if (id !== "menu") {
+                    window.clearInterval(uit)
+                    var prev = document.querySelector(".samsung.active")
+                    var next = document.querySelector(".samsung#" + id)
+
+                    if (prev && prev.id !== id) {
+                        prev.classList.toggle('active')
+                        /*
+                        views[prev.id].remove()
+                        prev.onclick = prev.ontouchstart = null
+                        */
+                    }
+
+                    next.classList.toggle('active')
+                    /*
+                    setTimeout(function () {
+                        views[id].load()
+                    }, 500)
+                    */
+                }
+            }
+
+            var cl = document.querySelectorAll(".close")
+            cl.forEach(function (el) {
+                el.onclick = close
+            })
+
+            function close(e) {
+                var p = e.target.parentNode
+                if (p.classList.contains("active")) {
+
+                    //views[p.id].remove()
+                    p.classList.remove("active")
+
+                }
+            }
+
+        }
+
+        function loadPicture() { }
+
+        function removePicture() { }
+
+
+
+    </script>
+
+    <!--
     <div id="samsung">
         <div id="header">
             <div id="logo">A</div>
@@ -252,76 +438,91 @@
             <div>Leave video message</div>
             <div>Draw something</div>
             <div>Take a picture!</div>
+            <div>Gallery</div>
         </div>
         <transient id="controls" class="">
             <button id="fullscreen">Fullscreen</button>
         </transient>
+        <video autoplay></video>
     </div>
     <div id="admin">
         <h1>Admin stuff</h1>
-            <h3>Office message</h3>
-            <div class="message red"><input type="checkbox"><input type="text" placeholder="Do not disturb, please!" value="Do not distrub Please!"></div>
-            <div class="message yellow"><input type="checkbox"><input type="text" placeholder="Working from home" value="Working from home"></div>
-            <div class="message yellow"><input type="checkbox"><input type="text" placeholder="At lunch" value="At lunch"></div>
-            <div class="message yellow"><input type="checkbox"><input type="text" placeholder="In meeting" value="In meeting"></div>
-            <div class="message yellow"><input type="checkbox"><input type="text" placeholder="Travelling" value="Travelling"></div>
-            <div class="message green"><input type="checkbox"><input type="text" placeholder="Available!"" value="Available"></div>
+        <h3>Office message</h3>
+        <div class="message red"><input type="checkbox"><input type="text" placeholder="Do not disturb, please!" value="Do not distrub Please!"></div>
+        <div class="message yellow"><input type="checkbox"><input type="text" placeholder="Working from home" value="Working from home"></div>
+        <div class="message yellow"><input type="checkbox"><input type="text" placeholder="At lunch" value="At lunch"></div>
+        <div class="message yellow"><input type="checkbox"><input type="text" placeholder="In meeting" value="In meeting"></div>
+        <div class="message yellow"><input type="checkbox"><input type="text" placeholder="Travelling" value="Travelling"></div>
+        <div class="message green"><input type="checkbox"><input type="text" placeholder="Available!"" value="
+                Available"></div>
         <h3>Today's tasks<input type="checkbox"></h3>
         <div>Note: seperate with semi-colon</div>
         <textarea rows="6" cols="45"></textarea>
     </div>
+
+
+
     <script>
-        var checked = document.querySelector("#admin .message input[type='checkbox']:checked")
-        var msg = document.querySelector("#samsung #message")
-
-        if(checked && checked.nextSibling.tagName === "INPUT"){
-            msg.classList = checked.parentNode.classList
-            msg.classList.remove("message")
-            msg.innerHTML = checked.nextSibling.value
-        }
-
-        var checks = document.querySelectorAll("#admin .message input[type='checkbox']")
-        for(var i = 0, n = checks.length; i < n; i++){ 
-            checks[i].onchange = checkboxChange
-        }
-
-        var today = document.querySelector("#today")
-        var todayCheck = document.querySelector("#admin h3 input[type='checkbox']")
+        //Ensure we capture checked away messages on reload
+        var checked = document.querySelector("#admin .message input[type='checkbox']:checked");
         
-        todayCheck.onchange = todayChecked
+        bootstrap()
+        setupControls()
+        setupVideo()
+        
 
-        function todayChecked(){
-            if(todayCheck.checked){
-                today.style.display = "block"
-            } else {
-                today.style.display = "none"
+        function bootstrap() {
+            //If an away message is already set, we should render it
+            if (checked) {
+                msg.classList = checked.parentNode.classList
+                msg.classList.remove("message")
+                msg.innerHTML = checked.nextSibling.value
             }
-        }
 
-        todayChecked()
-        
-        var textarea = document.querySelector("#admin textarea")
-        textarea.onblur = textBlur
-        function textBlur(){
-            var tasks = textarea.value.split(";")
-            today.innerHTML = "<legend>Today I'm ...</legend>"
-            tasks.forEach(function(task){
-                if(task.trim() != ""){
-                    today.innerHTML += `<li>${task}</li>`
+            //Capture all away message checkboxes in the admin interface
+            var checkboxes = document.querySelectorAll("#admin .message input[type='checkbox']")
+            //adding eventlistener to checkboxes
+            for (var i = 0, n = checkboxes.length; i < n; i++) {
+                checkboxes[i].onchange = checkboxChange
+            }
+
+            
+            var msg = document.querySelector("#samsung #message")
+            var textarea = document.querySelector("#admin textarea")
+            var today = document.querySelector("#today")
+            var enableDailies = document.querySelector("#admin h3 input[type='checkbox']")
+
+            enableDailies.onchange = function () {
+                if (enableDailies.checked) {
+                    today.style.display = "block"
+                } else {
+                    today.style.display = "none"
                 }
-            });
+            }
+
+            enableDailies.dispatchEvent(new Event('change'));
+
+            textarea.onblur = function () {
+                var tasks = textarea.value.split(";")
+                today.innerHTML = "<legend>Today I'm ...</legend>"
+                tasks.forEach(function (task) {
+                    if (task.trim() != "") {
+                        today.innerHTML += `<li>${task}</li>`
+                    }
+                });
+            }
+
+            textarea.blur()
         }
 
-        textBlur()
 
-        function checkboxChange(e){
-            if(checked && checked != e.target){
+        function checkboxChange(e) {
+            if (checked && checked != e.target) {
                 checked.checked = false
             }
-            
-            if(e.target.checked){
+
+            if (e.target.checked) {
                 checked = e.target
-                
                 msg.classList = e.target.parentNode.classList
                 msg.classList.remove("message")
                 msg.innerHTML = e.target.nextSibling.value
@@ -331,30 +532,42 @@
             }
         }
 
-        var controls = document.querySelector("#samsung #controls")
-        var touchTimer;
-        var uiTimer;
-        controls.onmousedown = controls.ontouchstart = function(e){
-            touchTimer = setTimeout(function(){
-                controls.classList.add("active")
-                uiTimer = setTimeout(function(){
+        function setupControls() {
+            var controls = document.querySelector("#samsung #controls")
+            var touchTimer;
+            var uiTimer;
+            controls.onmousedown = controls.ontouchstart = function (e) {
+                touchTimer = setTimeout(function () {
+                    controls.classList.add("active")
+                    uiTimer = setTimeout(function () {
+                        controls.classList.remove("active")
+                    }, 5000);
+                }, 2000)
+            }
+
+            controls.onmouseup = controls.ontouchend = function () {
+                clearInterval(touchTimer);
+            }
+
+            var fullscreen = controls.querySelector("#fullscreen")
+            fullscreen.onclick = function () {
+                document.webkitIsFullScreen ? document.webkitExitFullscreen() : document.body.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT)
+                uiTimer = setTimeout(function () {
                     controls.classList.remove("active")
                 }, 5000);
-            }, 3500)
+            }
         }
 
-        controls.onmouseup = controls.ontouchend = function(){
-            clearInterval(touchTimer);
+        function setupVideo(){
+            var constraints = {video: true};
+
+            var video = document.querySelector("video")
+            navigator.mediaDevices.getUserMedia(constraints).
+            then((stream) => {video.srcObject = stream});
         }
 
-        var fullscreen = controls.querySelector("#fullscreen")
-        fullscreen.onclick = function(){
-            document.webkitIsFullScreen ? document.webkitExitFullscreen() : document.body.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT)
-            uiTimer = setTimeout(function(){
-                    controls.classList.remove("active")
-            }, 5000);
-        }
 
-    </script>
+    </script>-->
 </body>
+
 </html>

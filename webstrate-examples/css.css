@@ -1,0 +1,225 @@
+body,
+        html {
+            margin:0;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            background: white;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-select: none;
+        }
+
+        #samsung {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 768px;
+            height: 1024px;
+            color:  #103e80;
+            font-family: AUPassataRegular, verdana, sans-serif;
+            padding: 0px 50px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+
+        #samsung #header {
+            border-bottom: 6px solid #103e80;
+        }
+
+        #samsung #header div {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        #samsung #header div#logo {
+            position: relative;
+            top: -10px;
+            font-size: 1000%;
+            margin-right: 20px;
+            font-family: au_icons;
+            margin-bottom: -20px;
+        }
+
+        #samsung #header h2 {
+            margin-top:25px;
+        }
+
+        #samsung #header h4,
+        #samsung h3 {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #samsung  #message {
+            margin: 20px 0px;
+            padding:30px 10px;
+            text-align: center;
+            width: 100%;
+            display:none;
+        }
+
+        #samsung  #message.yellow {
+            display:block;
+            color:black;
+            background:#f7f056;
+        }
+
+        #samsung  #message.red {
+            display:block;
+            color:white;
+            background:#dc050c;
+        }
+
+        #samsung  #message.green {
+            display:block;
+            color:white;
+            background:#4eb265;
+        }
+
+        #samsung #today {
+            margin: 50px 0px;
+            /* To remove default bottom margin */
+            padding: 0px;
+            font-size: 150%;
+            list-style-position: inside;
+        }
+
+        #samsung #today li {
+            margin-left: 10px;
+        }
+
+        #samsung #today legend {
+            margin-bottom: 10px;
+            font-size: 110%;
+            font-weight: bolder;
+        }
+
+        #samsung #menu {
+            position:absolute;
+            bottom:50px;
+            text-align:center;
+            margin:auto;
+        } 
+
+        #samsung #menu div {
+            display:inline-block;
+            padding:5px;
+            border:1px solid lightblue;
+            margin:10px;
+            cursor:default;
+        }
+
+        #samsung #controls {
+            position:absolute;
+            top:10px;
+            left:10px;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            border:1px dashed #333333;
+            -webkit-transition: width 0.5s;
+            overflow:hidden;
+        }
+
+        #samsung #controls button {
+            opacity:0;
+        }
+
+        #samsung #controls.active {
+            background: #333333;
+            width:200px;
+            left:0px;
+            border-radius:0px 25px 25px 0px;
+            -webkit-transition: width 0.5s;
+        }
+
+        #samsung #controls.active button {
+            opacity:1;
+            
+            -webkit-transition: opacity 0.5s;
+            -webkit-transition-delay: 0.5s; 
+            transition-delay: 0.5s;
+            padding:5px;
+            width:140px;
+            margin:6px 0px 0px 25px;
+            border-radius: 3px;
+            font-size:110%;
+            background:grey;
+        }
+
+        #samsung video {
+            display:none;
+        }
+
+        #admin {
+            position: absolute;
+            top: 0px;
+            left: 769px;
+            color:white;
+            background: #333333;
+            height: 100%;
+            width: 100%;
+            font-family: AUPassataRegular, verdana, sans-serif;
+            padding: 0px 50px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+
+        #admin .message {
+            margin:5px;
+            padding:10px;
+            width:330px;
+        }
+
+        #admin .message input[type="checkbox"]{
+            -ms-transform: scale(2); /* IE */
+            -moz-transform: scale(2); /* FF */
+            -webkit-transform: scale(2); /* Safari and Chrome */
+            -o-transform: scale(2); /* Opera */
+            padding: 10px;
+            margin-right: 30px;
+        }
+
+         #admin h1 input[type="checkbox"] {
+            -ms-transform: scale(2); /* IE */
+            -moz-transform: scale(2); /* FF */
+            -webkit-transform: scale(2); /* Safari and Chrome */
+            -o-transform: scale(2); /* Opera */
+            margin:-10px 20px;
+         }
+
+        #admin .message input[type="text"] {
+            width:280px;
+            padding:5px;
+        }
+
+        #admin .message.red {
+            background:#dc050c;
+        }
+
+        #admin .message.green {
+            background:#4eb265;
+        }
+
+        #admin .message.yellow {
+            background:#f7f056;
+        }
+
+        /* AU FONTS */
+        @font-face {
+            font-family: AUPassataRegular;
+            src: url("https://www.aucdn.dk/fonts/aupassata_rg-webfont.eot");
+            src: url("https://www.aucdn.dk/fonts/aupassata_rg-webfont.eot?#iefix") format("embedded-opentype"), url("https://www.aucdn.dk/fonts/aupassata_rg-webfont.woff2") format("woff2"), url("https://www.aucdn.dk/fonts/aupassata_rg-webfont.woff") format("woff"), url("https://www.aucdn.dk/fonts/aupassata_rg-webfont.ttf") format("truetype"), url("https://www.aucdn.dk/fonts/aupassata_rg-webfont.svg#AUPassataRegular") format("svg");
+            font-weight: 400;
+            font-style: normal
+        }
+
+        @font-face {
+            font-family: au_icons;
+            src: url("https://www.aucdn.dk/fonts/au_icons.eot");
+            src: url("https://www.aucdn.dk/fonts/au_icons.eot#iefix") format("embedded-opentype"), url("https://www.aucdn.dk/fonts/au_icons.woff") format("woff"), url("https://www.aucdn.dk/fonts/au_icons.woff2") format("woff"), url("https://www.aucdn.dk/fonts/au_icons.ttf") format("truetype"), url("https://www.aucdn.dk/fonts/au_icons.svg#au_icons") format("svg");
+            font-weight: 400;
+            font-style: normal
+        }
