@@ -7,3 +7,7 @@ A template for office signs on tablet interfaces
 ## [ubiboard](ubiboard.html)
 
 A template for posting an image from the phone camera (or laptop file system) as an asset to the webstrate
+
+## [ubidisplay](publicdisplay.html)
+
+A template for curating content on a public display
