@@ -8,6 +8,6 @@ A template for office signs on tablet interfaces
 
 A template for posting an image from the phone camera (or laptop file system) as an asset to the webstrate
 
-## [ubidisplay](publicdisplay.html)
+## [public display](publicdisplay.html)
 
-A template for curating content on a public display
+A template for curating content on a shared display
